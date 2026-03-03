@@ -1,6 +1,6 @@
-# FaceTune_AI — Local AI Video Face Swap
+# FaceTune_AI — AI Video Face Swap
 
-FaceTune_AI is a local, SaaS‑style **AI video face swap** app with a modern dashboard UI and a FastAPI + Celery backend.  
+FaceTune_AI is a SaaS‑style **AI video face swap** app with a modern dashboard UI and a FastAPI + Celery backend.  
 Everything runs locally via Docker: no external AI APIs, all data stays on your machine.
 
 ---
@@ -155,4 +155,4 @@ FaceTune_AI/
 
 ## License
 
-MIT (or another license of your choice).
+MIT.
