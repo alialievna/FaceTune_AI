@@ -1,0 +1,15 @@
+# локальные данные и артефакты
+data/
+*.mp4
+*.mov
+*.webm
+*.avi
+*.mkv
+
+# Python
+__pycache__/
+*.pyc
+
+# Node / Next.js
+node_modules/
+.next/

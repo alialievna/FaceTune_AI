@@ -1,0 +1,41 @@
+services:
+  redis:
+    image: redis:7-alpine
+
+  api:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - "8002:8000"
+    volumes:
+      - ./data:/data
+    environment:
+      - REDIS_URL=redis://redis:6379/0
+      - DATA_DIR=/data
+    depends_on:
+      - redis
+
+  worker:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    command: celery -A app.worker worker -l info -P solo
+    volumes:
+      - ./data:/data
+    environment:
+      - REDIS_URL=redis://redis:6379/0
+      - DATA_DIR=/data
+    depends_on:
+      - redis
+
+  web:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "3001:3000"
+    environment:
+      - NEXT_PUBLIC_API_URL=http://localhost:8002
+    depends_on:
+      - api
